@@ -82,6 +82,12 @@ def upload_file(request):
 
 @api_view(['GET'])
 def get_status(request):
+    if not store["metadata"]["filename"]:
+        return Response({
+            "status": "empty",
+            "message": "No data uploaded yet"
+        }, status=200)
+
     return Response(store["metadata"])
 
 @api_view(['GET'])
