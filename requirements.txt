@@ -1,0 +1,6 @@
+Django>=4.2
+djangorestframework
+pandas
+openpyxl
+python-multipart
+django-cors-headers
