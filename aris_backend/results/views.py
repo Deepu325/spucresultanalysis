@@ -1,4 +1,4 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, csrf_exempt
 from rest_framework.response import Response
 from rest_framework import status
 from datetime import datetime
@@ -12,6 +12,7 @@ from .services.section_toppers_queries import (
     section_toppers_top10_by_section,
 )
 
+@csrf_exempt
 @api_view(['POST'])
 def upload_file(request):
     file = request.FILES.get('file')
@@ -125,6 +126,7 @@ def get_heatmap(request):
 def get_subjects(request):
     return Response(store["subjects"])
 
+@csrf_exempt
 @api_view(['POST'])
 def clear_data(request):
     """Clear all stored results and reset to empty state"""

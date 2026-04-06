@@ -5,10 +5,7 @@ const API_BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api";
 // Configure axios instance with CORS support
 const axiosInstance = axios.create({
     baseURL: API_BASE,
-    withCredentials: true,
-    headers: {
-        'Content-Type': 'application/json',
-    }
+    withCredentials: false,
 });
 
 export const getCollegeToppers = () => axiosInstance.get(`/toppers/college/`).then(res => res.data);
