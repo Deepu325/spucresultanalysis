@@ -1,6 +1,9 @@
-from rest_framework.decorators import api_view, csrf_exempt
+from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
 
 from .services.excel_parser import parse_excel
@@ -78,6 +81,8 @@ def upload_file(request):
         }, status=200)
 
     except Exception as e:
+        import traceback
+        print(f"Upload error: {traceback.format_exc()}")
         return Response({"error": f"Unexpected error: {str(e)}"}, status=400)
 
 @api_view(['GET'])
