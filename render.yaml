@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: spuc-aris-backend
+    env: python
+    region: us-east
+    plan: free
+    buildCommand: pip install -r aris_backend/requirements.txt
+    startCommand: cd aris_backend && gunicorn aris_backend.wsgi:application
+    envVars:
+      - key: SECRET_KEY
+        value: your-secret-key-here-change-this
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "spuc-aris-backend.onrender.com"
