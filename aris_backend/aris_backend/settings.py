@@ -42,11 +42,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://spucresultanalysis.vercel.app",
 ]
 
-# Allow all origins in development
-if DEBUG:
-    CORS_ALLOW_ALL_ORIGINS = True
-else:
-    CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_PRIVATE_NETWORK = True
 
 ROOT_URLCONF = 'aris_backend.urls'
 
